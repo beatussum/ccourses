@@ -56,7 +56,7 @@ Prière de consuler [ce document](SECURITY.md).
 
 ## Licences
 
-Tous les documents se trouvant sur ce dépôt sont distribués, sauf en cas de mention contraire, sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.fr) dont un exemplaire ce trouve [ici](LICENSE), et écrits par moi (Mattéo Rossillol‑‑Laruelle a.k.a. Beatussum).
+Tous les documents se trouvant sur ce dépôt sont distribués, sauf en cas de mention contraire, sous licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode.fr) dont un exemplaire ce trouve [ici](LICENSE), et écrits par moi (Mattéo Rossillol‑‑Laruelle a.k.a. Beatussum).
 Pour davantage de détails sur les licences s'applicant sur les différents fichiers tiers, prière de consulter le fichier [copyright](copyright) dans [le format de fichier `debian/copyright`](https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/).
 
 [^1]: Le **P**rojet **L**ogiciel **C** (ou **P.L.C.**) consiste en l'implémentation d'une bibliothèque graphique ou d'un logiciel d'analyse d'image qui s'étale sur tout le mois de mai (c'est un gros projet !).
