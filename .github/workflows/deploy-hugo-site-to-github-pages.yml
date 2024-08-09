@@ -1,0 +1,25 @@
+name: Deploy Hugo site to GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["Build Hugo site"]
+    types: [completed]
+    branches: ["main"]
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    name: Deploy Hugo site to GitHub Pages
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy Hugo site to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5

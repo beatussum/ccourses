@@ -22,6 +22,7 @@ COURSE_PDF_FILES	::= $(COURSE_TEX_FILES:.tex=.pdf)
 CLASS_FILE	?= content/cours/ressources/ccourses.cls
 CLASS_BUILD_DIR	= $@/tex/latex
 
+BASE_URL	?=
 HUGO_GENERATED	?= public resources
 
 THEME_NAME	?= hugo-geekdoc
@@ -37,39 +38,50 @@ COURSE_BUILD_DIR	= $(BUILD_DIR)/$(COURSE).d
 COURSE_PDF_FILE		= $(COURSE_BUILD_DIR)/$(COURSE).pdf
 
 CP_CMD		?= cp
-MKDIR_CMD	?= mkdir
+HUGO_SITE_CMD	?= hugo --environment production --gc --minify
+HUGO_SERVER_CMD	?= hugo server
+MKDIR_CMD	?= mkdir -p
 MKTEXLSR_CMD	?= mktexlsr
 PDFLATEX_CMD	?= TEXMFHOME=$(TEXMFHOME) pdflatex -interaction=nonstopmode -shell-escape
-RM_CMD		?= rm
+RM_CMD		?= rm -f
+RMDIR_CMD	?= rm -fr
 TAR_CMD		?= tar
 WGET_CMD	?= wget
 
 BUILD_CURRENT_LATEX	= $(PDFLATEX_CMD) -output-directory=$(COURSE_BUILD_DIR) $<
 
 .PHONY: all
-all: pdf theme
+all: pdf site theme
 
 .PHONY: pdf
 pdf: $(COURSE_PDF_FILES)
+
+.PHONY: server
+server: pdf theme
+	$(HUGO_SERVER_CMD)
+
+.PHONY: site
+site: pdf theme
+	$(HUGO_SITE_CMD) --baseURL "$(BASE_URL)"
 
 .PHONY: theme
 theme: $(THEME_DIR)
 
 .PHONY: clean
 clean:
-	$(RM_CMD) -fr $(BUILD_DIR)
-	$(RM_CMD) -fr $(HUGO_GENERATED)
+	$(RMDIR_CMD) $(BUILD_DIR)
+	$(RMDIR_CMD) $(HUGO_GENERATED)
 
 .PHONY: mrproper
 mrproper: clean
-	$(RM_CMD) -f $(COURSE_PDF_FILES)
-	$(RM_CMD) -fr $(THEME_DIR)
+	$(RM_CMD) $(COURSE_PDF_FILES)
+	$(RMDIR_CMD) $(THEME_DIR)
 
 $(BUILD_DIR):
 	$(MKDIR_CMD) $@
 
 $(TEXMFHOME): $(BUILD_DIR)
-	$(MKDIR_CMD) -p $(CLASS_BUILD_DIR)
+	$(MKDIR_CMD) $(CLASS_BUILD_DIR)
 	$(CP_CMD) $(CLASS_FILE) $(CLASS_BUILD_DIR)
 	$(MKTEXLSR_CMD) $@
 
