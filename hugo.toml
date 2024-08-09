@@ -1,3 +1,32 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://beatussum.github.io/ccourses/"
+copyright = "Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>"
+defaultContentLanguage = "fr"
+enableEmoji = true
+enableRobotsTXT = true
+languageCode = "fr"
+removePathAccents = true
+summaryLength = 80
+timeZone = "Europe/Paris"
+title = "Formation C 17"
+
+disablePathToLower = true
+enableGitInfo = true
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+theme = "hugo-geekdoc"
+
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+[markup.tableOfContents]
+startLevel = 1
+endLevel = 5
+
+[params]
+geekdocRepo = "https://github.com/beatussum/ccourses"
+geekdocEditPath = "edit/develop"
+geekdocLegalNotice = "https://github.com/beatussum/ccourses/blob/develop/LICENSE"
+
+[params.geekdocContentLicense]
+name = "CC BY-SA 4.0"
+link = "https://creativecommons.org/licenses/by-sa/4.0/"
