@@ -14,8 +14,17 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 
+/build/
+
 # Hugo
+
+## Generated directories and files
 
 /public/
 /resources/
 /.hugo_build.lock
+
+## Hugo theme
+
+/themes/
+!/themes/.gitkeep

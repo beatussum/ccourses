@@ -7,6 +7,7 @@ Copyright: 2024, Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
 
 Files:
  .gitignore
+ Makefile
 Copyright: 2024, Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
 License: GPL-3+
 
