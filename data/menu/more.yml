@@ -1,0 +1,9 @@
+more:
+  - name: Versions
+    ref: "https://github.com/beatussum/ccourses/releases/"
+    external: true
+    icon: "gdoc_download"
+  - name: Voir les sources
+    ref: "https://github.com/beatussum/ccourses/"
+    external: true
+    icon: "gdoc_github"
