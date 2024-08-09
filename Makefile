@@ -20,6 +20,7 @@ COURSE_TEX_FILES	::= $(patsubst %,content/cours/%/ressources/cours.tex,$(COURSES
 COURSE_PDF_FILES	::= $(COURSE_TEX_FILES:.tex=.pdf)
 
 CLASS_FILE	?=
+CLASS_BUILD_DIR	= $@/tex/latex
 
 HUGO_GENERATED	?= public resources
 
@@ -40,8 +41,16 @@ RM_CMD		?= rm
 TAR_CMD		?= tar
 WGET_CMD	?= wget
 
+BUILD_CURRENT_LATEX	= $(PDFLATEX_CMD) -output-directory=$(COURSE_BUILD_DIR) $<
+
 .PHONY: all
-all: $(COURSE_PDF_FILES) $(THEME_DIR)
+all: pdf theme
+
+.PHONY: pdf
+pdf: $(COURSE_PDF_FILES)
+
+.PHONY: theme
+theme: $(THEME_DIR)
 
 .PHONY: clean
 clean:
@@ -57,15 +66,15 @@ $(BUILD_DIR):
 	$(MKDIR_CMD) $@
 
 $(TEXMFHOME): $(BUILD_DIR)
-	$(MKDIR_CMD) -p $@/tex/latex
-	$(CP_CMD) $(CLASS_FILE) $@/tex/latex
+	$(MKDIR_CMD) -p $(CLASS_BUILD_DIR)
+	$(CP_CMD) $(CLASS_FILE) $(CLASS_BUILD_DIR)
 	$(MKTEXLSR_CMD) $@
 
 %.pdf: %.tex $(BUILD_DIR) $(TEXMFHOME)
 	$(MKDIR_CMD) $(COURSE_BUILD_DIR)
 
-	$(PDFLATEX_CMD) -output-directory=$(COURSE_BUILD_DIR) $<
-	$(PDFLATEX_CMD) -output-directory=$(COURSE_BUILD_DIR) $<
+	$(BUILD_CURRENT_LATEX)
+	$(BUILD_CURRENT_LATEX)
 
 	$(CP_CMD) $(COURSE_BUILD_DIR)/cours.pdf $@
 
