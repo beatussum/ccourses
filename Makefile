@@ -19,7 +19,7 @@ COURSES	?=
 COURSE_TEX_FILES	::= $(patsubst %,content/cours/%/ressources/cours.tex,$(COURSES))
 COURSE_PDF_FILES	::= $(COURSE_TEX_FILES:.tex=.pdf)
 
-CLASS_FILE	?=
+CLASS_FILE	?= content/cours/ressources/ccourses.cls
 CLASS_BUILD_DIR	= $@/tex/latex
 
 HUGO_GENERATED	?= public resources
