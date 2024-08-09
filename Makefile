@@ -16,7 +16,7 @@
 
 COURSES	?=
 
-COURSE_TEX_FILES	::= $(patsubst %,content/cours/%/ressources/cours.tex,$(COURSES))
+COURSE_TEX_FILES	::= $(foreach course,$(COURSES),content/cours/$(course)/ressources/$(course).tex)
 COURSE_PDF_FILES	::= $(COURSE_TEX_FILES:.tex=.pdf)
 
 CLASS_FILE	?= content/cours/ressources/ccourses.cls
@@ -31,7 +31,10 @@ THEME_URL	?= https://github.com/thegeeklab/hugo-geekdoc/releases/download/v$(THE
 
 BUILD_DIR		?= build
 TEXMFHOME		?= $(BUILD_DIR)/texmf-home
-COURSE_BUILD_DIR	= $(patsubst content/cours/%/ressources/cours.pdf,$(BUILD_DIR)/%.d,$@)
+
+COURSE			= $(basename $(notdir $@))
+COURSE_BUILD_DIR	= $(BUILD_DIR)/$(COURSE).d
+COURSE_PDF_FILE		= $(COURSE_BUILD_DIR)/$(COURSE).pdf
 
 CP_CMD		?= cp
 MKDIR_CMD	?= mkdir
@@ -76,7 +79,7 @@ $(TEXMFHOME): $(BUILD_DIR)
 	$(BUILD_CURRENT_LATEX)
 	$(BUILD_CURRENT_LATEX)
 
-	$(CP_CMD) $(COURSE_BUILD_DIR)/cours.pdf $@
+	$(CP_CMD) $(COURSE_PDF_FILE) $@
 
 $(THEME_DIR):
 	$(MKDIR_CMD) $@
