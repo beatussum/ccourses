@@ -66,7 +66,6 @@
 
 \RequirePackage{svg}
 \RequirePackage{tikz}
-\RequirePackage[svgnames, table]{xcolor}
 
 % Some command overrides
 
