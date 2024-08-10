@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run: sudo apt-get install -qy texlive
+        run: sudo apt-get install -qy texlive-full
 
       - name: Checkout
         uses: actions/checkout@v4.1.7
