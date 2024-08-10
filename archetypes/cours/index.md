@@ -13,7 +13,7 @@ TODO
 
 ## Errata
 
-{{< hint title="À noter" type=note >}}
+{{< hint title="À noter" >}}
 Dans cette section, vous retrouverez les différentes erreurs qui ont été repérées dans le cours ainsi que leurs corrections.
 {{< /hint >}}
 
@@ -28,7 +28,7 @@ Les différentes resources utilisées pendant ce cours sont les suivantes :
 
 ### Compilation à partir des sources
 
-{{< hint title="À noter" type=note >}}
+{{< hint title="À noter" >}}
 Pour compiler l'ensemble des cours, voir [la page parente](..).
 {{< /hint >}}
 
@@ -41,7 +41,7 @@ Pour compiler spécifiquement un cours à partir des sources LaTeX, les dépenda
 - [Git](https://git-scm.com/),
 - une distribution LaTex comme, par exemple, [TeX Live](https://www.tug.org/texlive/).
 
-{{< hint title="À noter" type=note >}}
+{{< hint title="À noter" >}}
 
 Les deux premiers programmes devrait déjà être installés comme paquets systèmes sous la plupart des distributions GNU/Linux.
 Ainsi, sous Ubuntu, l'installation des dépendances se résume à la ligne de commande suivante :

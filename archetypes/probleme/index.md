@@ -4,7 +4,7 @@ draft: true
 weight: {{ .File.ContentBaseName | int }}
 ---
 
-{{< hint title="Important" type=important >}}
+{{< hint title="Important" >}}
 
 **Il s'agitd'un problème ouvert.**
 

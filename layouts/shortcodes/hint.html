@@ -1,0 +1,19 @@
+{{/* This file is based on https://github.com/thegeeklab/hugo-geekdoc/blob/v0.47.0/layouts/shortcodes/hint.html. */}}
+{{/* It is an override of the shortcode provided by hugo-geekdoc allowing internationalization. */}}
+
+{{ $type := default "note" (.Get "type") }}
+{{ $icon := .Get "icon" }}
+{{ $title := default (printf "hint_%s" $type | i18n) (.Get "title") }}
+
+
+<blockquote class="gdoc-hint {{ $type | lower }}">
+  <div class="gdoc-hint__title flex align-center">
+    {{- with $icon -}}
+      <svg class="gdoc-icon {{ . }}"><use xlink:href="#{{ . }}"></use></svg>
+      <span>{{ $title }}</span>
+    {{- else -}}
+      <i class="fa {{ $type | lower }}" title="{{ $title }}"></i>
+    {{- end -}}
+  </div>
+  <div class="gdoc-hint__text">{{ .Inner | $.Page.RenderString }}</div>
+</blockquote>

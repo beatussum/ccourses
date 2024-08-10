@@ -2,7 +2,7 @@
 title: "Cours"
 ---
 
-{{< hint type=warning title=Avertissement >}}
+{{< hint type=warning >}}
 
 Il est important de rappeler que ce cours est réalisé par **un étudiant**.
 
@@ -36,7 +36,7 @@ Pour compiler l'ensemble des cours à partir des sources LaTeX, les dépendances
 - [Git](https://git-scm.com/),
 - une distribution LaTex comme, par exemple, [TeX Live](https://www.tug.org/texlive/).
 
-{{< hint title="À noter" type=note >}}
+{{< hint title="À noter" >}}
 
 Les deux premiers programmes devrait déjà être installés comme paquets systèmes sous la plupart des distributions GNU/Linux.
 Ainsi, sous Ubuntu, l'installation des dépendances se résume à la ligne de commande suivante :

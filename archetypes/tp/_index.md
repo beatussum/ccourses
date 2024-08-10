@@ -20,7 +20,7 @@ TODO
 
 ## Errata
 
-{{< hint title="À noter" type=note >}}
+{{< hint title="À noter" >}}
 Dans cette section, vous retrouverez les différentes erreurs qui ont été repérées dans le cours ainsi que leurs corrections.
 {{< /hint >}}
 
