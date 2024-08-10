@@ -18,7 +18,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{cppcourses}[My custom LaTeX beamer]
+\ProvidesClass{ccourses}[My custom LaTeX beamer]
 
 \LoadClass[aspectratio = 1610, french]{beamer}
 
