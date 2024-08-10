@@ -98,6 +98,14 @@ clean:
 	$(RMDIR_CMD) $(BUILD_DIR)
 	$(RMDIR_CMD) $(HUGO_GENERATED)
 
+	$(RM_CMD) $(COURSE_TEX_FILES:.tex=.aux)
+	$(RM_CMD) $(COURSE_TEX_FILES:.tex=.log)
+	$(RM_CMD) $(COURSE_TEX_FILES:.tex=.nav)
+	$(RM_CMD) $(COURSE_TEX_FILES:.tex=.out)
+	$(RM_CMD) $(COURSE_TEX_FILES:.tex=.snm)
+	$(RM_CMD) $(COURSE_TEX_FILES:.tex=.synctex.gz)
+	$(RM_CMD) $(COURSE_TEX_FILES:.tex=.toc)
+
 .PHONY: mrproper
 mrproper: clean
 	$(RM_CMD) $(COURSE_PDF_FILES)
