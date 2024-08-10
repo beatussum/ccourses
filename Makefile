@@ -20,7 +20,7 @@
 
 # COURSE-RELATED VARIABLES #
 
-COURSES	?=
+COURSES	?= 01
 
 COURSE_TEX_FILES	::= $(foreach course,$(COURSES),content/cours/$(course)/ressources/$(course).tex)
 COURSE_PDF_FILES	::= $(COURSE_TEX_FILES:.tex=.pdf)
