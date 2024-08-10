@@ -53,7 +53,6 @@
 
 %% Main packages
 
-\RequirePackage[hidelinks]{hyperref}
 \RequirePackage[french]{cleveref}
 \RequirePackage[most]{tcolorbox}
 
