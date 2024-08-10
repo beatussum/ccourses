@@ -1,0 +1,54 @@
+name: Rapport de bogue
+description: Signaler un bogue
+title: "[Bug]: "
+labels: ["bug"]
+
+body:
+  - type: markdown
+    attributes:
+      value: Merci de prendre le temps de remplir ce rapport de bogue !
+
+  - type: input
+    id: contact
+    attributes:
+      label: Détails de contact
+      description: Comment puis-je vous contacter en cas de besoin ?
+      placeholder: email@exemple.com
+
+  - type: textarea
+    id: what-happened
+
+    attributes:
+      label: Que s'est-il passé ?
+      description: Dites-moi aussi ce que vous attendez comme comportement ?
+      placeholder: Dites-moi ce que vous voyez!
+      value: "Un bogue est survenu!"
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sortie de journal intéressante
+
+      description: |
+        Merci de copier-coller n'importe quelle sortie de journal intéressante.
+        Ce que vous entrez sera automatiquement formatté comme du code, ainsi pas besoin de _backtics_ (« \` »).
+
+      render: output
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code de conduite
+
+      description: |
+        En soumettant cette _issue_, vous acceptez :
+
+      options:
+        - label: J'accepte les conditions du code de conduite de ce projet que l'on peut retrouver [ici](https://github.com/beatussum/ccourses/blob/develop/CODE_OF_CONDUCT.md).
+          required: true
+
+        - label: Cette demande de tirage ne fait pas référence à une vulnérabilité de sécurité.
+          required: true
