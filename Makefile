@@ -14,28 +14,46 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 
+#############
+# VARIABLES #
+#############
+
+# COURSE-RELATED VARIABLES #
+
 COURSES	?=
 
 COURSE_TEX_FILES	::= $(foreach course,$(COURSES),content/cours/$(course)/ressources/$(course).tex)
 COURSE_PDF_FILES	::= $(COURSE_TEX_FILES:.tex=.pdf)
 
+# CLASS-RELATED VARIABLES #
+
 CLASS_FILE	?= content/cours/ressources/ccourses.cls
-CLASS_BUILD_DIR	= $@/tex/latex
+
+# HUGO-RELATED VARIABLES #
 
 BASE_URL	?=
 HUGO_GENERATED	?= public resources
+
+# THEME-RELATED VARIABLES #
 
 THEME_NAME	?= hugo-geekdoc
 THEME_VERSION	?= 0.47.0
 THEME_DIR	?= themes/$(THEME_NAME)
 THEME_URL	?= https://github.com/thegeeklab/hugo-geekdoc/releases/download/v$(THEME_VERSION)/hugo-geekdoc.tar.gz
 
-BUILD_DIR		?= build
-TEXMFHOME		?= $(BUILD_DIR)/texmf-home
+# BUILD-RELATED VARIABLES #
 
+BUILD_DIR	?= build
+TEXMFHOME	?= $(BUILD_DIR)/texmf-home
+
+# DYNAMIC VARIABLES #
+
+CLASS_BUILD_DIR		= $@/tex/latex
 COURSE			= $(basename $(notdir $@))
 COURSE_BUILD_DIR	= $(BUILD_DIR)/$(COURSE).d
 COURSE_PDF_FILE		= $(COURSE_BUILD_DIR)/$(COURSE).pdf
+
+# COMMAND VARIABLES #
 
 CP_CMD		?= cp
 HUGO_SITE_CMD	?= hugo --environment production --gc --minify
@@ -49,6 +67,12 @@ TAR_CMD		?= tar
 WGET_CMD	?= wget
 
 BUILD_CURRENT_LATEX	= $(PDFLATEX_CMD) -output-directory=$(COURSE_BUILD_DIR) $<
+
+###########
+# TARGETS #
+###########
+
+# `.PHONY`S #
 
 .PHONY: all
 all: pdf site theme
@@ -67,6 +91,8 @@ site: pdf theme
 .PHONY: theme
 theme: $(THEME_DIR)
 
+# CLEANERS #
+
 .PHONY: clean
 clean:
 	$(RMDIR_CMD) $(BUILD_DIR)
@@ -76,6 +102,8 @@ clean:
 mrproper: clean
 	$(RM_CMD) $(COURSE_PDF_FILES)
 	$(RMDIR_CMD) $(THEME_DIR)
+
+# TRUE TARGETS #
 
 $(BUILD_DIR):
 	$(MKDIR_CMD) $@
