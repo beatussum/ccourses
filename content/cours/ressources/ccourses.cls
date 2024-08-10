@@ -1,130 +1,152 @@
+%% ccourses.cls
+%% Copyright 2024 Mattéo Rossillol‑‑Laruelle.
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Mattéo Rossillol‑‑Laruelle.
+%
+% This work consists of the file courses.cls.
+
+
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{cppcourses}[My custom LaTeX beamer]
 
-\LoadClass[aspectratio = 1610]{beamer}
-
-\RequirePackage[french, strings = unicode]{babel}
-\RequirePackage{csquotes}
-\RequirePackage[useregional]{datetime2}
-
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{cancel}
-\RequirePackage{diagbox}
-\RequirePackage{fixmath}
-\RequirePackage{listings}
-\RequirePackage{mathtools}
-\RequirePackage{multirow}
-\RequirePackage{nicefrac}
-\RequirePackage{siunitx}
-\RequirePackage{svg}
-
-\RequirePackage{fontspec}
-\RequirePackage[math-style = french, bold-style = ISO]{unicode-math}
+\LoadClass[aspectratio = 1610, french]{beamer}
 
 \usetheme{Madrid}
 
 \setbeamercovered{transparent}
 \setbeamertemplate{caption}[numbered]
 
-\AtBeginSubsection[]{
-  \begin{frame}
-    \vfill
-    \centering
+% Packages
 
-    \begin{beamercolorbox}[
-      sep = 8pt, center, shadow = true, rounded = true
-    ]{title}
+%% Font configuration
 
-      \usebeamerfont{title}\insertsectionhead\par
-      \usebeamerfont{subtitle}\insertsubsectionhead\par
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
 
-    \end{beamercolorbox}
+%% i18n packages
 
-    \vfill
-  \end{frame}
-}
+\RequirePackage[french, english]{babel}
+\RequirePackage{fvextra} % needed to be loaded before `csquotes`
+\RequirePackage[autostyle = true]{csquotes} % for `\enquote` command
+\RequirePackage[useregional]{datetime2} % better date formatting
+\RequirePackage{icomma} % fix comma space
 
-\AtBeginSubsubsection[]{
-  \begin{frame}
-    \vfill
-    \centering
+%% Packages for maths and physics
 
-    \begin{beamercolorbox}[
-      sep = 8pt, center, shadow = true, rounded = true
-    ]{title}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{nicefrac}
+\RequirePackage[arrowdel]{physics}
+\RequirePackage{siunitx}
+\RequirePackage{stmaryrd} % for some math operators
 
-      \usebeamerfont{title}\insertsectionhead\par
-      \usebeamerfont{subtitle}\insertsubsectionhead\par
-      \usebeamerfont{subtitle}\insertsubsubsectionhead\par
+%% Main packages
 
-    \end{beamercolorbox}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[french]{cleveref}
+\RequirePackage[most]{tcolorbox}
 
-    \vfill
-  \end{frame}
-}
+%% `tabular` packages
 
-\languagepath{French}
-\uselanguage{French}
+\RequirePackage{multicol}
+\RequirePackage{multirow}
+\RequirePackage{tabularx}
 
-\setmainfont[
-  ItalicFont = NewCM10-Italic.otf,
-  BoldFont = NewCM10-Bold.otf,
-  BoldItalicFont = NewCM10-BoldItalic.otf,
-  SmallCapsFeatures = {Numbers = OldStyle}
-]{NewCM10-Regular.otf}
+%% Drawing packages
 
-\setsansfont[
-  ItalicFont = NewCMSans10-Oblique.otf,
-  BoldFont = NewCMSans10-Bold.otf,
-  BoldItalicFont = NewCMSans10-BoldOblique.otf,
-  SmallCapsFeatures = {Numbers = OldStyle}
-]{NewCMSans10-Regular.otf}
+\RequirePackage{svg}
+\RequirePackage{tikz}
+\RequirePackage[svgnames, table]{xcolor}
 
-\setmonofont[
-  ItalicFont = NewCMMono10-Italic.otf,
-  BoldFont = NewCMMono10-Bold.otf,
-  BoldItalicFont = NewCMMono10-BoldOblique.otf,
-  SmallCapsFeatures = {Numbers = OldStyle}
-]{NewCMMono10-Regular.otf}
+% Some command overrides
 
-\setmathfont{NewCMMath-Regular.otf}
-
-\newcommand<>{\myanswer}[1]{\visible#2{\textcolor{orange}{#1}}}
-\newcommand{\myanswerize}[1]{\color{orange}}
-\newcommand{\mydef}[1]{\textcolor{red}{#1}}
-\newcommand{\myhence}{\text{d'où }}
-\newcommand{\myimp}[1]{\textcolor{teal}{#1}}
-\newcommand<>{\myissue}[1]{\action#2{\textcolor{red}{Problème} #1}}
-\newcommand{\mykeyword}[1]{\texttt{#1}}
-\newcommand<>{\mywarn}[1]{\action#2{\textcolor{red}{Attention} #1}}
-
-\AtBeginDocument{\mathcode`\;=\numexpr\mathcode`\;-\string"4000\relax}
-
+\AtBeginDocument{\RenewCommandCopy\qty\SI} % conflict with `physics`
 \renewcommand{\arraystretch}{1.5}
 
-\hypersetup{bookmarksdepth = 4}
+%% Patch cleveref
 
-\lstset{
-    commentstyle = \color{teal},
-    keywordstyle = \color{magenta},
-    numberstyle = \tiny\color{gray},
-    stringstyle = \color{purple},
-    basicstyle = \tiny,
-    breakatwhitespace = false,
-    breaklines = true,
-    captionpos = b,
-    extendedchars = true,
-    keepspaces = true,
-    numbers = left,
-    numbersep = 5pt,
-    showspaces = false,
-    showstringspaces = false,
-    showtabs = false,
-    tabsize = 4,
-    xleftmargin = 0.5cm
+%%% See https://tex.stackexchange.com/a/670393.
+
+\makeatletter
+\patchcmd\@cref{\begingroup}{\begingroup\@safe@activestrue}{}{\fail}
+\patchcmd\@cref{\cref@isstackfull{\@refsubstack}}{\cref@isstackfull{\@refsubstack}\@safe@activesfalse}{}{\fail}
+\makeatother
+
+%% Section headers
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\alph{subsubsection}}
+
+% New commands
+
+\newcommand{\mydef}[1]{\textcolor{red}{\text{#1}}}
+\newcommand{\myimp}[1]{\textcolor{teal}{\text{#1}}}
+
+\newcommand{\myand}{\text{ et }}
+\newcommand{\myor}{\text{ ou }}
+
+%% Bitwise operators
+
+\newcommand{\notb}{\overline}
+\newcommand{\xor}{\oplus}
+
+\newcommand{\xnor}{\notb{\oplus}}
+\newcommand{\nand}{\notb{\cdot}}
+\newcommand{\nor}{\notb{+}}
+
+% `amsmath`
+
+\DeclareMathOperator{\naturalset}{\mathbb{N}}
+\DeclareMathOperator{\realset}{\mathbb{R}}
+
+% `mathtools`
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\iinterval}{\llbracket}{\rrbracket}
+
+% `tabularx`
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+% Some `tcolorbox` definitions
+
+%% Styles
+
+\tcbset{
+    tab/.style = {
+        center title,
+        colback = white!10!white,
+        colbacktitle = Salmon!40!white,
+        colframe = red!50!black,
+        coltitle = black,
+        enhanced,
+        fonttitle = \bfseries,
+        fontupper = \normalsize \sffamily
+    }
 }
+
+%% Environments
+
+\newtcolorbox{tcbtabular}[2]{
+    tab,
+    tabularx = {#1},
+    #2
+}
+
+% Other package setups
 
 \sisetup{
     locale = FR,
@@ -142,4 +164,6 @@
     uncertainty-mode = separate
 }
 
-\author[R.--L. Mattéo]{ROSSILLOL--LARUELLE Mattéo}
+% General setup
+
+\author[Mattéo R.-{}-L.]{Mattéo ROSSILLOL‑{}‑LARUELLE}
