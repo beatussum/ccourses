@@ -3,4 +3,6 @@ title: "Journal des modifications"
 geekdocDescription: "Modifications apportées d'une version à une autre"
 ---
 
-**Rien pour l'instant.**
+- Version 20240810:
+
+  Première version.
