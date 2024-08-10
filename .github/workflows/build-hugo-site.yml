@@ -64,6 +64,9 @@ jobs:
       - name: Download theme
         run: make -C ccourses theme
 
+      - name: Avoid rebuilding PDF files again
+        run: sed -i "/^site:/ s/pdf//" ccourses/Makefile
+
       - name: Build with Hugo
         run: make -C ccourses BASE_URL="${{ steps.pages.outputs.base_url }}" site
 
