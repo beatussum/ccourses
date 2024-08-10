@@ -24,3 +24,34 @@ Si un professeur semble, a posteriori, contredire des éléments apportés par c
 
 Tous les cours présents dans cette section ont été créé en utilisant [cette classe LaTeX](ressources/ccourses.cls) dont je suis l'auteur (Mattéo Rossillol‑‑Laruelle).
 Comme tous les autres documents se trouvant sur ce site, ce fichier est sous licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode.fr).
+
+### Compilation à partir des sources
+
+#### Dépendances
+
+Pour compiler l'ensemble des cours à partir des sources LaTeX, les dépendances suivantes sont nécessaires **(pour la construction uniquement)** :
+
+- [GNU Make](https://www.gnu.org/software/make/),
+- [GNU core utilities](https://www.gnu.org/software/coreutils/),
+- [Git](https://git-scm.com/),
+- une distribution LaTex comme, par exemple, [TeX Live](https://www.tug.org/texlive/).
+
+{{< hint title="À noter" type=note >}}
+
+Les deux premiers programmes devrait déjà être installés comme paquets systèmes sous la plupart des distributions GNU/Linux.
+Ainsi, sous Ubuntu, l'installation des dépendances se résume à la ligne de commande suivante :
+
+```console
+$ sudo apt install git texlive
+```
+
+{{< /hint >}}
+
+#### Construction
+
+On peut maintenant procéder à la construction avec les lignes de commande suivantes :
+
+```console
+$ git clone https://github.com/beatussum/ccourses.git
+$ make -C ccourses pdf
+```
