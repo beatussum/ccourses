@@ -67,8 +67,8 @@ int main()
 
 {{< expand "Correction proposée" >}}
 
-On vous propose la correction suivante que vous pouvez télécharger [ici](ressources/answer.c).
+On vous propose la correction suivante que vous pouvez télécharger [ici](ressources/correction.c).
 
-{{< include file="ressources/answer.c" language=c >}}
+{{< include file="ressources/correction.c" language=c >}}
 
 {{< /expand >}}
