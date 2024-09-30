@@ -20,7 +20,7 @@ jobs:
         run: sudo apt-get install -qy inkscape texlive-full
 
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.0
 
       - name: Build PDF files
         run: make pdf
@@ -52,7 +52,7 @@ jobs:
           path: pdf
 
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.0
         with:
           path: ccourses
 
